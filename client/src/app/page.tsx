@@ -21,7 +21,7 @@ export default function Dashboard() {
     <div className="space-y-8 px-4 sm:px-6 lg:px-8">
       <div>
         <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Welcome back, Student</h1>
-        <p className="mt-1 text-sm text-gray-500">Here's an overview of your campus activities and available spaces.</p>
+        <p className="mt-1 text-sm text-gray-500">Here&apos;s an overview of your campus activities and available spaces.</p>
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -101,7 +101,7 @@ export default function Dashboard() {
         <div className="mb-6 sm:mb-0 sm:mr-6">
           <h2 className="text-2xl font-bold mb-2">Flash Sale Active!</h2>
           <p className="text-primary-foreground opacity-90 max-w-xl">
-            Exclusive campus events tickets are dropping right now. Limited availability. Secure your spot before they're gone.
+            Exclusive campus events tickets are dropping right now. Limited availability. Secure your spot before they&apos;re gone.
           </p>
         </div>
         <Button size="lg" variant="secondary" className="w-full sm:w-auto font-semibold whitespace-nowrap" asChild>

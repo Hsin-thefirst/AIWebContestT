@@ -22,6 +22,15 @@ export default function SpaceBookingPage() {
   const [selectedType, setSelectedType] = useState<"all" | "academic" | "sports">("all")
   const [selectedSpace, setSelectedSpace] = useState<string | null>(null)
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null)
+  const [unavailableSlots, setUnavailableSlots] = useState<Set<string>>(new Set())
+
+  useEffect(() => {
+    const unavailable = new Set<string>()
+    TIME_SLOTS.forEach(time => {
+      if (Math.random() > 0.8) unavailable.add(time)
+    })
+    setUnavailableSlots(unavailable)
+  }, [selectedSpace, selectedDate])
 
   const filteredSpaces = SPACES.filter(s => selectedType === "all" || s.type === selectedType)
 
@@ -127,7 +136,7 @@ export default function SpaceBookingPage() {
                     <label className="text-sm font-medium text-gray-900">Time Slot</label>
                     <div className="grid grid-cols-3 gap-2">
                       {TIME_SLOTS.map(time => {
-                        const isUnavailable = Math.random() > 0.8
+                        const isUnavailable = unavailableSlots.has(time)
                         const isSelected = selectedSlot === time
                         return (
                           <button

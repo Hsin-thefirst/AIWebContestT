@@ -70,7 +70,7 @@ export default function OrderStatusPage() {
             <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-gray-200" />
 
             <div className="space-y-8 relative">
-              {steps.map((step, index) => {
+              {steps.map((step) => {
                 const status = getStepStatus(step.key)
                 const Icon = step.icon
 
