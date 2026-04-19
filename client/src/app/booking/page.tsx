@@ -24,12 +24,17 @@ export default function SpaceBookingPage() {
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null)
 
   const unavailableSlots = useMemo(() => {
-    const unavailable = new Set<string>()
-    TIME_SLOTS.forEach(time => {
-      if (Math.random() > 0.8) unavailable.add(time)
-    })
-    return unavailable
-  }, [selectedSpace, selectedDate])
+    const unavailable = new Set<string>();
+    TIME_SLOTS.forEach((time, index) => {
+      const spaceHash = selectedSpace ? selectedSpace.length : 0;
+      const dateHash = selectedDate ? selectedDate.getTime() : 0;
+      
+      if ((time.length + spaceHash + dateHash + index) % 5 === 0) {
+        unavailable.add(time);
+      }
+    });
+    return unavailable;
+  }, [selectedSpace, selectedDate]);
 
   const filteredSpaces = SPACES.filter(s => selectedType === "all" || s.type === selectedType)
 
