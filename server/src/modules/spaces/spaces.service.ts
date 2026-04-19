@@ -55,4 +55,8 @@ export class SpacesService {
 
     return this.reservationsRepository.save(reservation);
   }
+
+  async createReservation(spaceId: string, userId: string, startTime: Date, endTime: Date): Promise<Reservation> {
+    return this.reserveSpace(spaceId, userId, startTime, endTime);
+  }
 }

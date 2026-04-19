@@ -3,7 +3,7 @@ import { SpacesService } from '../src/modules/spaces/spaces.service';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Reservation } from '../src/modules/spaces/entities/reservation.entity';
-import { Space, SpaceType } from '../src/modules/spaces/entities/space.entity';
+import { Space } from '../src/modules/spaces/entities/space.entity';
 import { ConflictException } from '@nestjs/common';
 
 describe('SpacesService Overlap Logic', () => {
@@ -30,9 +30,6 @@ describe('SpacesService Overlap Logic', () => {
   });
 
   it('should block reservations within the 5-minute buffer for academic spaces', async () => {
-    const startTime = new Date('2026-05-01T10:00:00Z');
-    const endTime = new Date('2026-05-01T11:00:00Z');
-    
     const mockOverlap = { id: 'existing' };
     jest.spyOn(repo, 'findOne').mockResolvedValue(mockOverlap as any);
     

@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 import { SpacesService } from './spaces.service';
 import { Space } from './space.entity';
 import { Reservation } from './reservation.entity';
