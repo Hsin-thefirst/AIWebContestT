@@ -1,6 +1,6 @@
 import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, LessThan, GreaterThan } from 'typeorm';
+import { Repository, LessThan, MoreThan } from 'typeorm';
 import { Space } from './space.entity';
 import { Reservation } from './reservation.entity';
 
@@ -36,7 +36,7 @@ export class SpacesService {
       where: {
         space: { id: spaceId },
         startTime: LessThan(endWithBuffer),
-        endTime: GreaterThan(startWithBuffer),
+        endTime: MoreThan(startWithBuffer),
         status: 'confirmed',
       },
     });

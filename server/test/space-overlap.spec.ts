@@ -2,8 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { SpacesService } from '../src/modules/spaces/spaces.service';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Reservation } from '../src/modules/spaces/entities/reservation.entity';
-import { Space } from '../src/modules/spaces/entities/space.entity';
+import { Reservation } from '../src/modules/spaces/reservation.entity';
+import { Space } from '../src/modules/spaces/space.entity';
 import { ConflictException } from '@nestjs/common';
 
 describe('SpacesService Overlap Logic', () => {
