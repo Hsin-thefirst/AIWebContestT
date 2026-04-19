@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { format, addDays } from "date-fns"
 import { CalendarIcon, MapPin, Users, Info } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
@@ -22,14 +22,13 @@ export default function SpaceBookingPage() {
   const [selectedType, setSelectedType] = useState<"all" | "academic" | "sports">("all")
   const [selectedSpace, setSelectedSpace] = useState<string | null>(null)
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null)
-  const [unavailableSlots, setUnavailableSlots] = useState<Set<string>>(new Set())
 
-  useEffect(() => {
+  const unavailableSlots = useMemo(() => {
     const unavailable = new Set<string>()
     TIME_SLOTS.forEach(time => {
       if (Math.random() > 0.8) unavailable.add(time)
     })
-    setUnavailableSlots(unavailable)
+    return unavailable
   }, [selectedSpace, selectedDate])
 
   const filteredSpaces = SPACES.filter(s => selectedType === "all" || s.type === selectedType)
